@@ -1,8 +1,8 @@
 {
-  "name": "@junobuild/core",
-  "version": "0.0.48",
+  "name": "juno-core",
+  "version": "0.0.1",
   "description": "JavaScript core client for Juno",
-  "author": "David Dal Busco (https://daviddalbusco.com)",
+  "author": "zeeghazi",
   "license": "MIT",
   "type": "module",
   "main": "./dist/node/index.mjs",
@@ -27,18 +27,16 @@
     "declarations"
   ],
   "scripts": {
-    "rmdir": "node ../../scripts/rmdir.mjs",
     "ts-declaration": "tsc --emitDeclarationOnly --outDir dist/types",
-    "build": "npm run rmdir && mkdir -p dist && cp -R declarations dist && node esbuild.mjs && npm run ts-declaration",
+    "build": "mkdir -p dist && cp -R declarations dist && npm run ts-declaration",
     "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/junobuild/juno-js.git",
-    "directory": "packages/core"
+    "url": "git+https://github.com/zeeghazi/juno-core.git"
   },
   "bugs": {
-    "url": "https://github.com/junobuild/juno-js"
+    "url": "https://github.com/zeeghazi/juno-core"
   },
   "keywords": [
     "blockchain-as-a-service",
