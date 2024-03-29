@@ -1,16 +1,14 @@
-# Juno JavaScript SDK
+[![npm][npm-badge]][npm-badge-url]
+[![license][npm-license]][npm-license-url]
 
-JavaScript libraries for interfacing with [Juno].
+[npm-badge]: https://img.shields.io/npm/v/@junobuild/core
+[npm-badge-url]: https://www.npmjs.com/package/@junobuild/core
+[npm-license]: https://img.shields.io/npm/l/@junobuild/core
+[npm-license-url]: https://github.com/junobuild/juno-js/blob/main/LICENSE
 
-## Libraries
+# Juno JavaScript core SDK
 
-- [core](/packages/core): core client library
-- [analytics](/packages/analytics): tracker for analytics
-- [admin](/packages/admin): interfacing with admin features
-- [ledger](/packages/ledger): a lightweight fork of `@dfinity/nns` to parse account identifier for the ICP ledger
-- [config](/packages/config): configuration options for the CLI
-- [utils](/packages/utils): various utilities used across Juno's JS code base
-- [cli-tools](/packages/cli-tools): few tools used in Juno's CLIs and Plugins
+JavaScript core client for [Juno].
 
 ## License
 

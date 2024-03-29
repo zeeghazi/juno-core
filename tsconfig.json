@@ -1,16 +1,4 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "target": "esnext",
-    "lib": ["esnext", "dom"],
-    "strict": true,
-    "noImplicitAny": false,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "module": "esnext",
-    "skipLibCheck": true,
-    "outDir": "./dist",
-    "types": ["node"]
-  },
-  "exclude": ["**/src/**/*.test.ts", "**/src/**/*.spec.ts", "**/src/**/*.mock.ts"]
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*", "candid/**/*"]
 }

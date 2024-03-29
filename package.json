@@ -1,119 +1,60 @@
 {
-  "name": "@junobuild/juno-js",
-  "version": "0.0.63",
-  "description": "JavaScript libraries for interfacing with Juno",
+  "name": "@junobuild/core",
+  "version": "0.0.48",
+  "description": "JavaScript core client for Juno",
   "author": "David Dal Busco (https://daviddalbusco.com)",
   "license": "MIT",
-  "scripts": {
-    "declarations": "node ./scripts/declarations.mjs && npm run format",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint --max-warnings 0 .",
-    "prepare": "./scripts/license.sh",
-    "build": "npm run build --workspaces",
-    "size": "size-limit --json",
-    "update:agent": "./scripts/update-agent",
-    "docs": "node scripts/docs.js && prettier --write packages/**/README.md"
-  },
-  "workspaces": [
-    "packages/utils",
-    "packages/config",
-    "packages/core",
-    "packages/admin",
-    "packages/ledger",
-    "packages/analytics",
-    "packages/core-peer",
-    "packages/cli-tools"
-  ],
-  "devDependencies": {
-    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
-    "@size-limit/esbuild": "^11.1.2",
-    "@size-limit/preset-small-lib": "^11.1.2",
-    "@types/node": "^20.11.30",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "esbuild": "^0.20.2",
-    "eslint": "^8.57.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "node-fetch": "^3.3.2",
-    "prettier": "^3.2.5",
-    "prettier-plugin-organize-imports": "^3.2.4",
-    "tsdoc-markdown": "^0.4.0",
-    "typescript": "^5.4.3"
-  },
-  "size-limit": [
-    {
-      "name": "@junobuild/admin",
-      "path": "./packages/admin/dist/index.js",
-      "limit": "20 kB",
-      "ignore": [
-        "@dfinity/agent",
-        "@dfinity/candid",
-        "@dfinity/principal",
-        "@junobuild/utils",
-        "semver"
-      ]
-    },
-    {
-      "name": "@junobuild/core",
-      "path": "./packages/core/dist/index.js",
-      "limit": "120 kB"
-    },
-    {
-      "name": "@junobuild/core-worker",
-      "path": "./packages/core/dist/workers/auth.worker.js",
-      "limit": "100 kB"
-    },
-    {
-      "name": "@junobuild/core-peer",
-      "path": "./packages/core-peer/dist/index.js",
-      "limit": "20 kB",
-      "ignore": [
-        "@dfinity/agent",
-        "@dfinity/candid",
-        "@dfinity/principal",
-        "@dfinity/auth-client"
-      ]
-    },
-    {
-      "name": "@junobuild/ledger",
-      "path": "./packages/ledger/dist/index.js",
-      "limit": "7 kB",
-      "ignore": [
-        "@dfinity/agent",
-        "@dfinity/candid",
-        "@dfinity/principal"
-      ]
-    },
-    {
-      "name": "@junobuild/utils",
-      "path": "./packages/utils/dist/index.js",
-      "limit": "1 kB",
-      "ignore": [
-        "@dfinity/principal"
-      ]
-    },
-    {
-      "name": "@junobuild/analytics",
-      "path": "./packages/analytics/dist/index.js",
-      "limit": "4 kB",
-      "ignore": [
-        "@dfinity/agent",
-        "@dfinity/candid",
-        "@dfinity/principal"
-      ]
-    },
-    {
-      "name": "@junobuild/analytics-worker",
-      "path": "./packages/analytics/dist/workers/analytics.worker.js",
-      "limit": "110 kB"
-    },
-    {
-      "name": "@junobuild/config",
-      "path": "./packages/config/dist/index.js",
-      "limit": "30 B"
+  "type": "module",
+  "main": "./dist/node/index.mjs",
+  "module": "./dist/browser/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/browser/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/node/index.mjs"
+      }
     }
-  ]
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "declarations"
+  ],
+  "scripts": {
+    "rmdir": "node ../../scripts/rmdir.mjs",
+    "ts-declaration": "tsc --emitDeclarationOnly --outDir dist/types",
+    "build": "npm run rmdir && mkdir -p dist && cp -R declarations dist && node esbuild.mjs && npm run ts-declaration",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junobuild/juno-js.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/junobuild/juno-js"
+  },
+  "keywords": [
+    "blockchain-as-a-service",
+    "baas",
+    "dapps",
+    "dapps-development",
+    "internet computer",
+    "smart-contracts",
+    "web3"
+  ],
+  "homepage": "https://juno.build",
+  "dependencies": {
+    "@dfinity/agent": "^1.2.0",
+    "@dfinity/auth-client": "^1.2.0",
+    "@dfinity/identity": "^1.2.0",
+    "@dfinity/principal": "^1.2.0",
+    "@junobuild/utils": "*"
+  }
 }
