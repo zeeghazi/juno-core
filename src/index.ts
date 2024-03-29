@@ -21,12 +21,14 @@ export * from './types/subscription.types';
 export const initJuno = async (env: Environment): Promise<Unsubscribe[]> => {
   EnvStore.getInstance().set(env);
 
-  await initAuth();
+  return [];
 
-  const authSubscribe =
-    env.workers?.auth !== undefined ? initAuthTimeoutWorker(env.workers.auth) : undefined;
+  // await initAuth();
 
-  return [...(authSubscribe ? [authSubscribe] : [])];
+  // const authSubscribe =
+  //   env.workers?.auth !== undefined ? initAuthTimeoutWorker(env.workers.auth) : undefined;
+
+  // return [...(authSubscribe ? [authSubscribe] : [])];
 };
 
 export const authSubscribe = (callback: (authUser: User | null) => void): Unsubscribe =>
