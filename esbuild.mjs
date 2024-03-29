@@ -3,7 +3,7 @@
 import esbuild from 'esbuild';
 import {readdirSync, statSync} from 'fs';
 import {join} from 'path';
-import {build} from '../../scripts/esbuild.mjs';
+import {build} from './build-script.mjs';
 
 build();
 

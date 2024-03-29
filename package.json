@@ -1,25 +1,12 @@
 {
   "name": "juno-core",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "JavaScript core client for Juno",
   "author": "zeeghazi",
-  "license": "MIT",
   "type": "module",
   "main": "./dist/node/index.mjs",
   "module": "./dist/browser/index.js",
   "types": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/browser/index.js"
-      },
-      "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/node/index.mjs"
-      }
-    }
-  },
   "files": [
     "dist",
     "README.md",
@@ -28,7 +15,7 @@
   ],
   "scripts": {
     "ts-declaration": "tsc --emitDeclarationOnly --outDir dist/types",
-    "build": "mkdir -p dist && cp -R declarations dist && npm run ts-declaration",
+    "build": "mkdir -p dist && cp -R declarations dist && node esbuild.mjs && npm run ts-declaration",
     "prepack": "npm run build"
   },
   "repository": {
@@ -54,5 +41,21 @@
     "@dfinity/identity": "^1.2.0",
     "@dfinity/principal": "^1.2.0",
     "@junobuild/utils": "*"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@types/node": "^20.11.30",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "esbuild": "^0.20.2",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "node-fetch": "^3.3.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "tsdoc-markdown": "^0.4.0",
+    "typescript": "^5.4.3"
   }
 }
