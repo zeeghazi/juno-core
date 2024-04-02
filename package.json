@@ -36,13 +36,6 @@
     "web3"
   ],
   "homepage": "https://juno.build",
-  "dependencies": {
-    "@dfinity/agent": "^1.2.0",
-    "@dfinity/auth-client": "^1.2.0",
-    "@dfinity/identity": "^1.2.0",
-    "@dfinity/principal": "^1.2.0",
-    "@junobuild/utils": "*"
-  },
   "devDependencies": {
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@types/node": "^20.11.30",
